@@ -1,6 +1,7 @@
 import React from "react";
 import { IClass } from "../../../global/types";
 import { ClassIcon } from "../../UI";
+import css from './style.css'
 
 // assuming all data is coming in as string
 export const parseClassData = (data: Array<IClass>) => {
@@ -32,7 +33,7 @@ export const JobClasses = ({ data }: { data: Array<IClass> | null }) => {
     }
     const classes = getClasses();
 
-    return <div style={{ display: 'inline-flex', flexDirection: "row" }}>
+    return <div className={css['classes']}>
         {classes}
     </div>
 }
