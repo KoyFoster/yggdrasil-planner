@@ -3,11 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 // eslint-disable-next-line unused-imports/no-unused-imports
 import App from './App';
-// import reportWebVitals from './reportWebVitals';
-import styles from './styles/index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-console.log('styles:', styles);
 root.render(
     <React.StrictMode>
         <App />
