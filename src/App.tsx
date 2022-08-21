@@ -12,7 +12,7 @@ function App() {
         if (data) {
             setClassData(parseClassData(data as Array<IClass>));
             // Deallocate memory
-
+            setData(null);
         }
     }, [data]);
 
