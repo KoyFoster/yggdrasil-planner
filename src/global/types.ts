@@ -7,3 +7,6 @@ export interface IClass {
     'Passive Skills': string;
     'Details': string;
 }
+export interface IClassGroups {
+    [index: string | number]: Array<IClass>
+}

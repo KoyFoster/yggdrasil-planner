@@ -3,3 +3,8 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+/*classification*/
+.classes>div {
+    border: 4px solid darkgrey;
+}
