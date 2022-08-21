@@ -67,9 +67,12 @@ module.exports = {
         'import/extensions': 0,
         'no-underscore-dangle': 0,
         'consistent-return': 0,
+
+        'react/jsx-uses-react': 'on',
+        'react/react-in-jsx-scope': 'on',
+
         'react/display-name': 1,
         'react/no-array-index-key': 0,
-        'react/react-in-jsx-scope': 0,
         'react/prefer-stateless-function': 0,
         'react/forbid-prop-types': 0,
         'react/prop-types': 0,
