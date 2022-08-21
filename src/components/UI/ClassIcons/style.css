@@ -3,6 +3,8 @@
     width: 128px;
     height: 128px;
 
+    color: red;
+
     border: '2px solid grey';
     border-radius: 2px;
 }

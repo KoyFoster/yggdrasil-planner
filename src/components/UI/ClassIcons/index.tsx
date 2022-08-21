@@ -1,6 +1,6 @@
 import React from "react"
-import './index.css';
+import css from './style.css';
 
 export const ClassIcon = ({ label, children }: { label?: string, children?: string }) => {
-    return <div className="interface-icon">{label || children}</div>
+    return <div className={css["interface-icon"]}>{label || children}</div>
 }
