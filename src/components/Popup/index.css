@@ -1,0 +1,15 @@
+.dialogue {    
+    width: 512px;
+    height: 512px;
+    left: calc(50% - (512px * 0.5));
+    top: calc(50% - (512px * 0.5));
+    
+    position: fixed; 
+    overflow: auto;
+
+    background: #333333;
+    border: 4px;
+    border-radius: 8px;
+    border-color: #dddddd;
+    border-style: solid;
+}

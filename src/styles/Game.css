@@ -1,0 +1,8 @@
+
+@font-face {
+    font-family: 'DeterminationMonoWeb';
+    font-style: normal;
+    font-weight: normal;
+    src: local('DeterminationMonoWeb'),
+      url(../assets/fonts/undertale/DeterminationMonoWeb.ttf) format('truetype');
+  }
