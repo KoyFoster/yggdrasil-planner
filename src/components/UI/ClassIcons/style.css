@@ -16,6 +16,7 @@
 
     /* white-space: nowrap; */
     overflow: hidden;
+    cursor: pointer; 
 }
 
 .interface-icon > label {
@@ -23,6 +24,4 @@
     display: inline-block;
     width: 100%;
     color: red;
-
-    cursor: pointer; 
 }
