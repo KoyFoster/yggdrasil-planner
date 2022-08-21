@@ -1,6 +1,6 @@
 import React from "react";
 import { IClass } from "../../../global/types";
-import { ClassIcon } from "../../Interface/ClassIcon";
+import { ClassIcon } from "../../UI";
 
 // assuming all data is coming in as string
 export const parseClassData = (data: Array<IClass>) => {
