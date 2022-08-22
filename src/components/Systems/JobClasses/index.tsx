@@ -17,9 +17,9 @@ export const parseClassData = (data: Array<IClass>) => {
 
         // Check Skill Point Rank
         if (typeof rank === 'number') {
-            if (rank >= 10) fd["ランク - Rank"] = 'レア - Rare';
-            else if (rank >= 5) fd["ランク - Rank"] = 'ハイ - High';
-            else fd["ランク - Rank"] = 'ベース - Base';
+            if (rank > 10) fd["ランク - Rank"] = 'ベース - Base';
+            else if (rank > 5) fd["ランク - Rank"] = 'ハイ - High';
+            else fd["ランク - Rank"] = 'レア - Rare';
         }
         return fd;
     }).filter(d => d !== null) as Array<IClass> | null;
