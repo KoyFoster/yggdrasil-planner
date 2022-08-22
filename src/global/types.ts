@@ -1,4 +1,5 @@
 export interface IClass {
+    [index: string | number]: string | number;
     '分類 - classification': string;
     'クラス - Class': string;
     'ランク - Rank': string | number;
@@ -9,7 +10,7 @@ export interface IClass {
 }
 
 export interface IClassGroups {
-    [index: string | number]: Array<IClass>
+    [index: string | number]: Array<IClass>;
 }
 
 export enum CLASS_RANKS {
@@ -20,9 +21,9 @@ export enum CLASS_RANKS {
 }
 
 export interface IClassRank {
-    [index: string | number | CLASS_RANKS]: Array<IClass>;
+    [index: string | number]: Array<IClass>;
 }
 
 export interface IClassRankGroups {
-    [index: string | number]: Array<IClassRank>;
+    [index: string | number]: IClassRank;
 }

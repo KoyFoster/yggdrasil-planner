@@ -49,68 +49,62 @@ const groupClassses = (data: Array<IClass>) => {
     let ranks = [] as Array<string>;
     ranks = data.map(d => d["ランク - Rank"] as string);
     ranks = Array.from(new Set(ranks)).filter(r => !!r);
-    console.log('ranks:', ranks);
 
     // Start Making a group for each classification
-    const groups = {} as IClassGroups;
     const rankedgroups = {} as IClassRankGroups;
+
     // Create groups
     classifications.forEach(cl => {
-        groups[cl] = data.filter(d => d["分類 - classification"] === cl) as Array<IClass>;
-        rankedgroups[cl] = [] as Array<IClassRank>;
-
-
-        ranks.forEach((rank) => {
-            const group = groups[cl];
-
-            // console.log(`Adding ${rank}:`, group)
-
-            rankedgroups[cl][rank] = group.filter(c => c["ランク - Rank"] === rank);
+        const group = data.filter(d => d["分類 - classification"] === cl) as Array<IClass>;
+        rankedgroups[cl] = {} as IClassRank;
+        const rankedgroup = rankedgroups[cl];
+        ranks.forEach((rank: string) => {
+            const rg = group.filter(c => c["ランク - Rank"] === rank);
+            if (rg.length) {
+                rankedgroup[rank] = group.filter(c => c["ランク - Rank"] === rank);
+            }
         });
-
     });
-
-    console.log({ rankedgroups })
 
     return rankedgroups;
 }
 
-export const JobClasses = ({ data }: { data: IClassGroups }) => {
+export const JobClasses = ({ data }: { data: IClassRankGroups }) => {
 
     const getClassIcons = () => {
-        const cfs = Object.keys(data);
-
-        console.log('data:', data)
+        if (!data) return null;
+        console.log('data:', data);
+        const dKeys = Object.keys(data);
 
         // Render classfications
-        return cfs.map(c => {
-            const jobGroups = data[c];
+        return dKeys.map(classficationKey => {
+            const classfication = data[classficationKey];
+            const cfKeys = Object.keys(classfication);
+            console.log({ classfication })
 
-            // Get ranks
-            let ranks = [] as Array<string>;
-            ranks = jobGroups.map(group => group["ランク - Rank"] as string);
-            ranks = Array.from(new Set(ranks));
-
-            // Render Rank Groups
-            return <div className='classification' key={c}>
-                <h3>{c}</h3>
+            // Classification 
+            return <div key={classficationKey}>
+                <h3>{classficationKey}</h3>
                 {
-                    ranks.map(rank => {
-                        console.log({ rank });
+                    cfKeys.map((rankKey) => {
+                        const rank = classfication[rankKey];
+                        const rKeys = Object.keys(rank);
 
-                        // Job Classes
-                        return <div>
-                            <h3>{rank}</h3>
+                        // Ranks
+                        return <div key={rankKey}>
+                            <h4>{rankKey}</h4>
                             {
-                                jobGroups[rank]?.map((group) => {
-                                    const cls = group["クラス - Class"];
-                                    return <ClassIcon key={cls}>{cls}</ClassIcon>;
+                                rKeys.map(rKey => {
+                                    const jobClass = rank[rKey];
+
+                                    return <ClassIcon key={rKey}>{jobClass['クラス - Class']}</ClassIcon>
                                 })
                             }
-                        </div>
+                        </div>;
                     })
                 }
             </div>
+
         })
 
     }
