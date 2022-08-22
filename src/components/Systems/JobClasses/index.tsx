@@ -35,10 +35,6 @@ export const parseClassData = (data: Array<IClass>) => {
 // Rare are even more advanced classes
 // 15 > 10 > 5
 
-const groupRanks = (data: IClassGroups) => {
-
-}
-
 // Group data by classification
 const groupClassses = (data: Array<IClass>) => {
     // Get all possible classifications
@@ -71,42 +67,40 @@ const groupClassses = (data: Array<IClass>) => {
 
 export const JobClasses = ({ data }: { data: IClassRankGroups }) => {
 
+    const showClass = (header: string, classData: Array<IClass>) => {
+
+        return <>
+            <h4>{header}</h4>
+            {classData?.map(cd => {
+                return <ClassIcon key={cd['クラス - Class']}>{cd['クラス - Class']}</ClassIcon>
+            })}
+        </>
+    }
+
+    const showRanks = (header: string, rankData: IClassRank) => {
+
+        return <>
+            <h4>{header}</h4>
+            {showClass('ベース - Base', rankData['ベース - Base'])}
+            {showClass('ハイ - High', rankData['ハイ - High'])}
+            {showClass('レア - Rare', rankData['レア - Rare'])}
+            {showClass('不明 - undefined', rankData['不明 - undefined'])}
+        </>
+    }
+
     const getClassIcons = () => {
         if (!data) return null;
-        console.log('data:', data);
         const dKeys = Object.keys(data);
 
         // Render classfications
         return dKeys.map(classficationKey => {
-            const classfication = data[classficationKey];
-            const cfKeys = Object.keys(classfication);
-            console.log({ classfication })
+            const classfication = data[classficationKey] as IClassRank;
 
             // Classification 
             return <div key={classficationKey}>
-                <h3>{classficationKey}</h3>
-                {
-                    cfKeys.map((rankKey) => {
-                        const rank = classfication[rankKey];
-                        const rKeys = Object.keys(rank);
-
-                        // Ranks
-                        return <div key={rankKey}>
-                            <h4>{rankKey}</h4>
-                            {
-                                rKeys.map(rKey => {
-                                    const jobClass = rank[rKey];
-
-                                    return <ClassIcon key={rKey}>{jobClass['クラス - Class']}</ClassIcon>
-                                })
-                            }
-                        </div>;
-                    })
-                }
+                {showRanks(classficationKey, classfication)}
             </div>
-
         })
-
     }
     const icons = getClassIcons();
 

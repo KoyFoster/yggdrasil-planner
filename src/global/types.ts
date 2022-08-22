@@ -13,13 +13,6 @@ export interface IClassGroups {
     [index: string | number]: Array<IClass>;
 }
 
-export enum CLASS_RANKS {
-    '不明 - undefined',
-    'ベース - Base',
-    'ハイ - High',
-    'レア - Rare'
-}
-
 export interface IClassRank {
     [index: string | number]: Array<IClass>;
 }
