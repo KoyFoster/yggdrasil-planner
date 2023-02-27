@@ -5,7 +5,7 @@ import GSSServices from './services/GSSServices';
 import './styles/App.css';
 
 function App() {
-    const { data, error, setData } = GSSServices.components.GetSheetData('https://docs.google.com/spreadsheets/d/e/2PACX-1vTV7PZlNztlPWZ0Wh-KVO1eATqEboaNg3XkamCw5mzQ3dyQCGGSWTo73gBQCPRkJvZcXNnC9oSyPtpw/pub?gid=0&single=true&output=tsv');
+    const { data, error, setData } = GSSServices.components.GetSheetData('https://docs.google.com/spreadsheets/d/e/2PACX-1vQlz3ZrF9XVOIf-DpeQ2Qz8-dJoGk9U17wsP24VFvskaiFOrMwSsQGGrGDXTsBLC6EZw_FjaeVhS-j5/pub?output=tsv');
     const [classData, setClassData] = useState(null as IClassRankGroups | null);
 
     useEffect(() => {
